@@ -8,6 +8,8 @@ import { default as Category, CATEGORY } from '@components/Category';
 import { TodoI, TodoContext } from '@utils/context';
 import { useState, useEffect } from 'react';
 
+import { Container, Row } from 'react-bootstrap';
+
 const Home: NextPage = () => {
   const [todos, setTodos] = useState([] as TodoI[]);
 
@@ -17,11 +19,13 @@ const Home: NextPage = () => {
 
   return (
     <TodoContext.Provider value={{ todos, setTodos }}>
-      <div>
-        <AddTask />
+      <Container fluid>
+        <Row>
+          <AddTask />
+        </Row>
         <Category type={CATEGORY.INCOMPLETE} />
         <Category type={CATEGORY.COMPLETE} />
-      </div>
+      </Container>
     </TodoContext.Provider>
   );
 };

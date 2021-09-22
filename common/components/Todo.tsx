@@ -1,13 +1,14 @@
 import { useContext } from 'react';
 import { TodoContext } from '@utils/context';
+import CircleMarker from './CircleMarker';
 
 export default function Todo(props: {
   todo: string;
   done: boolean;
   id: string;
 }) {
-  const { todos, setTodos } = useContext(TodoContext);
   const { todo, done, id } = props;
+  const { todos, setTodos } = useContext(TodoContext);
 
   const onclick = () => {
     let current = [...todos];
@@ -28,9 +29,7 @@ export default function Todo(props: {
     <div>
       {todo}
       {String(done)}
-      <button type="button" onClick={onclick}>
-        Done
-      </button>
+      <CircleMarker done={done} setDone={onclick} />
       <button type="button" onClick={deleteTodo}>
         Delete
       </button>
